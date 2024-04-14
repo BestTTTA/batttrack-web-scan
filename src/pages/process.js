@@ -49,8 +49,8 @@ export default function Process() {
                     setProjectDetails(response.data);
                 } catch (error) {
                     console.error("Error fetching data", error);
-                    alert("Error fetching data: " + error.message);
-                    setProjectDetails(null);
+                    alert("โปรเจคยังไม่ถูกดำเนินการ");
+                    setProjectDetails(null);    
                 }
             };
             fetchData();
