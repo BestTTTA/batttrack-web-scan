@@ -26,7 +26,9 @@ const RenderStepsDropdown = ({ projectDetails }) => {
                         <p className='text-sm text-gray-700'>เวลาเริ่ม: {step.timestart || "-"}</p>
                         <p className='text-sm text-gray-700'>เวลาจบ: {step.endtime || "-"}</p>
                         <p className='text-sm text-gray-700'>สถานะ: {step.process_status ? 'ดำเนินการเสร็จสิ้น' : 'ยังไม่ดำเนินการ'}</p>
-                        <p className='text-sm text-gray-700'>พนักงงานที่ทำ: {step.employee.length > 0 ? step.employee.join(', ') : "ยังไม่มีพนักงาน"}</p>
+                        <p className='text-sm text-gray-700'>
+                            พนักงานที่ทำ: {step.employee.length > 0 ? step.employee.map(emp => emp.name).join(', ') : "ยังไม่มีพนักงาน"}
+                        </p>
                     </div>
                 )}
             </div>
@@ -50,7 +52,7 @@ export default function Process() {
                 } catch (error) {
                     console.error("Error fetching data", error);
                     alert("โปรเจคยังไม่ถูกดำเนินการ");
-                    setProjectDetails(null);    
+                    setProjectDetails(null);
                 }
             };
             fetchData();
